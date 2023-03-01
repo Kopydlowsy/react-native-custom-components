@@ -32,8 +32,9 @@ import {
   Platform,
   StyleSheet,
   View,
-  ViewPropTypes,
 } from 'react-native';
+import { ViewPropTypes } from 'deprecated-react-native-prop-types';
+
 var PropTypes = require('prop-types');
 
 var guid = require('./guid');
@@ -45,7 +46,7 @@ var COMPONENT_NAMES = ['Title', 'LeftButton', 'RightButton'];
 var NavigatorNavigationBarStyles = Platform.OS === 'android' ?
   NavigatorNavigationBarStylesAndroid : NavigatorNavigationBarStylesIOS;
 
-var navStatePresentedIndex = function(navState) {
+var navStatePresentedIndex = function (navState) {
   if (navState.presentedIndex !== undefined) {
     return navState.presentedIndex;
   }
@@ -109,7 +110,7 @@ class NavigatorNavigationBar extends React.Component {
     }
     var props = propStack[index];
     if (!props) {
-      props = propStack[index] = {style:{}};
+      props = propStack[index] = { style: {} };
     }
     return props;
   };
@@ -125,10 +126,10 @@ class NavigatorNavigationBar extends React.Component {
     var newDistToCenter = index - toIndex;
     var interpolate;
     if (oldDistToCenter > 0 && newDistToCenter === 0 ||
-        newDistToCenter > 0 && oldDistToCenter === 0) {
+      newDistToCenter > 0 && oldDistToCenter === 0) {
       interpolate = this.props.navigationStyles.Interpolators.RightToCenter;
     } else if (oldDistToCenter < 0 && newDistToCenter === 0 ||
-               newDistToCenter < 0 && oldDistToCenter === 0) {
+      newDistToCenter < 0 && oldDistToCenter === 0) {
       interpolate = this.props.navigationStyles.Interpolators.CenterToLeft;
     } else if (oldDistToCenter === newDistToCenter) {
       interpolate = this.props.navigationStyles.Interpolators.RightToCenter;
